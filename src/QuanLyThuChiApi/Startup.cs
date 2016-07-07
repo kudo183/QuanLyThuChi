@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using QuanLyThuChiApi.Models.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace QuanLyThuChiApi
 {
@@ -27,6 +29,8 @@ namespace QuanLyThuChiApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connection = @"Server=.;Database=QuanLyThuChi;Trusted_Connection=True;";
+            services.AddDbContext<QuanLyThuChiContext>(options => options.UseSqlServer(connection));
             // Add framework services.
             services.AddMvc();
         }
