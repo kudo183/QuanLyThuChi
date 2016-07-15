@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using QuanLyThuChiApi.Models.Entities;
 using Microsoft.EntityFrameworkCore;
+using huypq.SwaMiddleware;
+using Microsoft.AspNetCore.DataProtection;
 
 namespace QuanLyThuChiApi
 {
@@ -31,8 +29,10 @@ namespace QuanLyThuChiApi
         {
             var connection = @"Server=.;Database=QuanLyThuChi;Trusted_Connection=True;";
             services.AddDbContext<QuanLyThuChiContext>(options => options.UseSqlServer(connection));
-            // Add framework services.
-            services.AddMvc();
+            services.AddDataProtection()
+                .PersistKeysToFileSystem(new System.IO.DirectoryInfo(@"c:\temp-keys"))
+                .ProtectKeysWithDpapi();
+            services.AddRouting();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,7 +41,8 @@ namespace QuanLyThuChiApi
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.UseMvc();
+            app.UseSwa("QuanLyThuChiApi", true,
+                new System.Collections.Generic.List<string>(new string[] { "user.register" }));
         }
     }
 }

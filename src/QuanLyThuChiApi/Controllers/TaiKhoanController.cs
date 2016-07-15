@@ -1,24 +1,29 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using QuanLyThuChiApi.Models.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace QuanLyThuChiApi.Controllers
 {
-    [Route("[controller]")]
-    public class TaiKhoanController : Controller
+    public class TaiKhoanController : BaseController
     {
-        private QuanLyThuChiContext _context;
-
-        public TaiKhoanController(QuanLyThuChiContext context)
+        public override object ActionInvoker(string actionName, Dictionary<string, object> parameter)
         {
-            _context = context;
+            object result = null;
+
+            switch (actionName)
+            {
+                case "getall":
+                    result = GetAll();
+                    break;
+                default:
+                    break;
+            }
+
+            return result;
         }
 
-        [HttpGet]
-        public IEnumerable<string> Index()
+        public IEnumerable<string> GetAll()
         {
-            return _context.TaiKhoan.Select(p => p.TenTaiKhoan).ToList();
+            return DBContext.TaiKhoan.Select(p => p.TenTaiKhoan).ToList();
         }
     }
 }
