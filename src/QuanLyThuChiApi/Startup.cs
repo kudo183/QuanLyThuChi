@@ -41,8 +41,15 @@ namespace QuanLyThuChiApi
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.UseSwa("QuanLyThuChiApi", true,
-                new System.Collections.Generic.List<string>(new string[] { "user.register" }));
+            app.UseSwa("QuanLyThuChiApi", new SwaOptions()
+            {
+                IsUseTokenAuthentication = true,
+                TokenEnpoint = "user.token",
+                AllowAnonymousActions = new System.Collections.Generic.List<string>()
+                {
+                    "user.register"
+                }
+            });
         }
     }
 }

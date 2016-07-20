@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using huypq.SwaMiddleware;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace QuanLyThuChiApi.Controllers
 {
     public class TaiKhoanController : BaseController
     {
-        public override object ActionInvoker(string actionName, Dictionary<string, object> parameter)
+        public override SwaActionResult ActionInvoker(string actionName, Dictionary<string, object> parameter)
         {
-            object result = null;
+            SwaActionResult result = null;
 
             switch (actionName)
             {
@@ -21,9 +22,9 @@ namespace QuanLyThuChiApi.Controllers
             return result;
         }
 
-        public IEnumerable<string> GetAll()
+        public SwaActionResult GetAll()
         {
-            return DBContext.TaiKhoan.Select(p => p.TenTaiKhoan).ToList();
+            return CreateJsonResult(DBContext.TaiKhoan.Select(p => p.TenTaiKhoan).ToList());
         }
     }
 }
