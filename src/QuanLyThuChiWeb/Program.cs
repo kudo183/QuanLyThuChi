@@ -13,7 +13,11 @@ namespace QuanLyThuChiWeb
         {
             var host = new WebHostBuilder()
                 .UseKestrel()
+#if DEBUG
                 .UseContentRoot(Directory.GetCurrentDirectory())
+#elif RELEASE
+                .UseContentRoot(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot"))
+#endif
                 .UseIISIntegration()
                 .UseStartup<Startup>()
                 .Build();

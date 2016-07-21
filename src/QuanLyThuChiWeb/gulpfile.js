@@ -16,33 +16,39 @@ var paths = {
     webroot: "./wwwroot/"
 };
 
-paths.js = paths.webroot + "js/**/*.js";
-paths.minJs = paths.webroot + "js/**/*.min.js";
-paths.css = paths.webroot + "css/**/*.css";
-paths.minCss = paths.webroot + "css/**/*.min.css";
-paths.concatJsDest = paths.webroot + "js/site.min.js";
-paths.concatCssDest = paths.webroot + "css/site.min.css";
+paths.minJsDest = paths.webroot + "wwwroot/site.min.js";
+paths.minCssDest = paths.webroot + "wwwroot/site.min.css";
+
+//specify js files path, order is important
+paths.js = [
+    paths.webroot + "js/app.js"
+];
+
+//specify cs files path, order is important
+paths.css = [
+    paths.webroot + "css/app.css"
+];
 
 gulp.task("clean:js", function (cb) {
-    rimraf(paths.concatJsDest, cb);
+    rimraf(paths.minJsDest, cb);
 });
 
 gulp.task("clean:css", function (cb) {
-    rimraf(paths.concatCssDest, cb);
+    rimraf(paths.minCssDest, cb);
 });
 
 gulp.task("clean", ["clean:js", "clean:css"]);
 
 gulp.task("min:js", function () {
-    return gulp.src([paths.js, "!" + paths.minJs], { base: "." })
-      .pipe(concat(paths.concatJsDest))
+    return gulp.src(paths.js)
+      .pipe(concat(paths.minJsDest))
       .pipe(uglify())
       .pipe(gulp.dest("."));
 });
 
 gulp.task("min:css", function () {
-    return gulp.src([paths.css, "!" + paths.minCss])
-      .pipe(concat(paths.concatCssDest))
+    return gulp.src(paths.css)
+      .pipe(concat(paths.minCssDest))
       .pipe(cssmin())
       .pipe(gulp.dest("."));
 });
