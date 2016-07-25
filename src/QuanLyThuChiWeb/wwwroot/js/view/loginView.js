@@ -1,4 +1,4 @@
-﻿window.app.view.loginView = (function (utilsDOM, webApi) {
+﻿window.app.view.loginView = (function (utilsDOM) {
 
     var loginView = {
         show: show
@@ -9,29 +9,8 @@
         var view = createView("loginView");
         $("body").empty();
         $("body").append(view);
-        var viewModel = {
-            email: ko.observable("huy@gmail.com"),
-            password: ko.observable("nobita"),
-            signInAction: function (model) {
-                webApi.user.token({ user: model.email(), password: model.password() })
-                    .done(function (token) {
-                        window.localStorage.setItem(window.tokenKey, token);
-                        window.app.view.mainView.show();
-                    })
-                    .fail(function (msg) {
-                        console.log(msg);
-                    });
-            },
-            registerAction: function (model) {
-                webApi.user.register({ user: model.email(), password: model.password() })
-                    .done(function (msg) {
-                        console.log(msg);
-                    })
-                    .fail(function (msg) {
-                        console.log(msg);
-                    });
-            }
-        };
+        var viewModel = window.app.viewModel.loginViewModel.create();
+
         ko.applyBindings(viewModel, view);
     };
 
@@ -43,4 +22,4 @@
         $(view).append(utilsDOM.createElement("button", {}, "click: registerAction", "Register"));
         return view;
     };
-})(window.huy.control.utilsDOM, window.app.webApi);
+})(window.huy.control.utilsDOM);

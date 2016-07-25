@@ -8,6 +8,14 @@
             token: function (param) {
                 return get(apiUrl("user", "token"), param);
             }
+        },
+        taiKhoan: {
+            getall: function (param) {
+                return get(apiUrl("taikhoan", "getall"), param);
+            },
+            create: function (param) {
+                return post(apiUrl("taikhoan", "create"), param);
+            }
         }
     };
     return webApi;
@@ -34,18 +42,20 @@
         return $.ajax(url, options);
     }
 
-    function saveChanges(changes, url) {
+    function post(url, param) {
         var options = {
             dataType: "json",
             contentType: "application/x-www-form-urlencoded",
             cache: false,
             type: "post",
-            data: "=" + JSON.stringify(changes)
+            data: "=" + JSON.stringify(param)
         };
-        var antiForgeryToken = $("#antiForgeryToken").val();
-        if (antiForgeryToken) {
+
+        var token = window.localStorage.getItem(window.tokenKey);
+
+        if (token) {
             options.headers = {
-                'RequestVerificationToken': antiForgeryToken
+                'token': token
             };
         }
         return $.ajax(url, options);
