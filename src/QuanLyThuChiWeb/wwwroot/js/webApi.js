@@ -20,7 +20,7 @@
     };
     return webApi;
 
-    function apiUrl(controller, action) { return "http://localhost:5005/" + controller + "/" + action; }
+    function apiUrl(controller, action) { return "/" + controller + "/" + action; }
 
     function get(url, param) {
         param = param || {};
