@@ -24,6 +24,11 @@ paths.imageDest = paths.webroot + "wwwroot/images";
 paths.js = [
     paths.webroot + "js/lib/huy.control.utilsDOM.js",
     paths.webroot + "js/lib/huy.control.headerMenu.js",
+    paths.webroot + "js/defineNamespace.js",
+    paths.webroot + "js/webApi.js",
+    paths.webroot + "js/viewManager.js",
+    paths.webroot + "js/view/mainView.js",
+    paths.webroot + "js/view/loginView.js",
     paths.webroot + "js/app.js"
 ];
 
