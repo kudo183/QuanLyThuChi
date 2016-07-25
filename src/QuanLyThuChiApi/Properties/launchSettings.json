@@ -18,7 +18,8 @@
     },
     "QuanLyThuChiApi": {
       "commandName": "Project",
-      "launchBrowser": true,
+      "commandLineArgs": "http://localhost:5005",
+      "launchBrowser": false,
       "launchUrl": "http://localhost:5000/",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

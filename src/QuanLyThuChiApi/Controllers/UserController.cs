@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using huypq.SwaMiddleware;
+using Newtonsoft.Json;
 
 namespace QuanLyThuChiApi.Controllers
 {
@@ -15,10 +16,10 @@ namespace QuanLyThuChiApi.Controllers
             switch (actionName)
             {
                 case "token":
-                    result = Token(parameter["user"].ToString(), parameter["password"].ToString());
+                    result = Token(parameter["json"].ToString());
                     break;
                 case "register":
-                    result = Register(parameter["user"].ToString(), parameter["password"].ToString());
+                    result = Register(parameter["json"].ToString());
                     break;
                 default:
                     break;
@@ -27,17 +28,32 @@ namespace QuanLyThuChiApi.Controllers
             return result;
         }
 
-        public SwaActionResult Register(string user, string password)
+        private class JsonParameterModel
         {
-            if (DBContext.User.Any(p => p.Email == user))
+            public string user { get; set; }
+            public string password { get; set; }
+
+            public static JsonParameterModel FromJson(string json)
+            {
+                var result = JsonConvert.DeserializeObject<JsonParameterModel>(json);
+                return result;
+            }
+        }
+
+        public SwaActionResult Register(string json)
+        {
+            var model = JsonParameterModel.FromJson(json);
+
+            if (DBContext.User.Any(p => p.Email == model.user))
             {
                 return CreateStatusResult(System.Net.HttpStatusCode.Conflict);
             }
             var hasher = new huypq.Crypto.PasswordHash();
             var entity = new User()
             {
-                Email = user,
-                PasswordHash = hasher.HashedBase64String(password)
+                Email = model.user,
+                PasswordHash = hasher.HashedBase64String(model.password),
+                NgayTao = DateTime.UtcNow.Date
             };
             DBContext.User.Add(entity);
             try
@@ -51,21 +67,27 @@ namespace QuanLyThuChiApi.Controllers
             return CreateStatusResult();
         }
 
-        public SwaActionResult Token(string user, string password)
+        public SwaActionResult Token(string json)
         {
-            var entity = DBContext.User.FirstOrDefault(p => p.Email == user);
+            var model = JsonParameterModel.FromJson(json);
+            if (model == null)
+            {
+                return CreateStatusResult(System.Net.HttpStatusCode.Unauthorized);
+            }
+
+            var entity = DBContext.User.FirstOrDefault(p => p.Email == model.user);
             if (entity == null)
             {
                 return CreateStatusResult(System.Net.HttpStatusCode.Unauthorized);
             }
 
-            var result = huypq.Crypto.PasswordHash.VerifyHashedPassword(entity.PasswordHash, password);
+            var result = huypq.Crypto.PasswordHash.VerifyHashedPassword(entity.PasswordHash, model.password);
             if (result == false)
             {
                 return CreateStatusResult(System.Net.HttpStatusCode.Unauthorized);
             }
 
-            return CreateJsonResult(new SwaTokenModel() { User = user });
+            return CreateJsonResult(new SwaTokenModel() { User = model.user });
         }
     }
 }

@@ -33,6 +33,7 @@ namespace QuanLyThuChiApi
                 .PersistKeysToFileSystem(new System.IO.DirectoryInfo(@"c:\temp-keys"))
                 .ProtectKeysWithDpapi();
             services.AddRouting();
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +42,8 @@ namespace QuanLyThuChiApi
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            app.UseCors(builder => builder.WithOrigins("http://localhost:5000").AllowAnyHeader().AllowAnyMethod());
+            
             app.UseSwa("QuanLyThuChiApi", new SwaOptions()
             {
                 IsUseTokenAuthentication = true,
