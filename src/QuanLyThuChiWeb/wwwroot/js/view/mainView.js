@@ -1,15 +1,17 @@
 ﻿window.app.view.mainView = (function (viewManager) {
 
     var mainView = {
-        show: show
+        show: show,
+        init: init
     };
     return mainView;
 
-    function show(id) {
-        $("body").empty();
-        $("body").append('<div id="headerContent"></div>');
-        $("body").append('<div id="mainContent"></div>');
+    function show() {
+        $("#mainView").show();
+        $("#loginView").hide();
+    };
 
+    function init() {
         var headerMenuViewModel = {
             items: [
                 { text: "Tai khoan", value: "taiKhoanView", id: "" }
@@ -25,7 +27,7 @@
                     }
                 },
                 {
-                    text: "x",
+                    text: "X",
                     id: "exitButton",
                     action: function () {
                         window.localStorage.removeItem(window.tokenKey);
@@ -37,5 +39,5 @@
 
         viewManager.init("#headerContent", "#mainContent", headerMenuViewModel);
         viewManager.setCurrentView(0);
-    };
+    }
 })(window.app.view.viewManager);
