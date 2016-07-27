@@ -1,9 +1,11 @@
-﻿window.app.view.taiKhoanView = (function (utilsDOM) {
+﻿window.app.view.taiKhoanView = (function () {
     return function (id) {
-        var view = utilsDOM.createElement("div");
-        $(view).append(utilsDOM.createElement("input", { type: "email", placeholder: "Email" }));
-        $(view).append(utilsDOM.createElement("input", { type: "password", placeholder: "Password" }));
-        $(view).append(utilsDOM.createElement("button", {}, undefined, "OK"));
+        var view = window.huy.control.dataGrid.createView(id, {
+            hasCustomFilter: false,
+            hasColumnHeader: true,
+            hasColumnFilter: false,
+            hasBottomToolbar: true
+        });
         return view;
     };
-})(window.huy.control.utilsDOM);
+})();

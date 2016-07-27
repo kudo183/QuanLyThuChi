@@ -10,11 +10,11 @@
             }
         },
         taiKhoan: {
-            getall: function (param) {
-                return get(apiUrl("taikhoan", "getall"), param);
+            get: function () {
+                return get(apiUrl("taikhoan", "getall"));
             },
-            create: function (param) {
-                return post(apiUrl("taikhoan", "create"), param);
+            save: function (param) {
+                return post(apiUrl("taikhoan", "save"), param);
             }
         }
     };
@@ -48,7 +48,7 @@
             contentType: "application/x-www-form-urlencoded",
             cache: false,
             type: "post",
-            data: "=" + JSON.stringify(param)
+            data: "json=" + JSON.stringify(param)
         };
 
         var token = window.localStorage.getItem(window.tokenKey);

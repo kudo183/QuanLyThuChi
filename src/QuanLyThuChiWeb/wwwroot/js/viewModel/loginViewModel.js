@@ -16,7 +16,7 @@
                         window.app.view.mainView.show();
                     })
                     .fail(function (msg) {
-                        console.log(msg);
+                        console.log("fail: " + msg);
                     });
             },
             registerAction: function (model) {

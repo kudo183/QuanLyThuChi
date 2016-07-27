@@ -9,6 +9,7 @@
     function show() {
         $("#mainView").show();
         $("#loginView").hide();
+        viewManager.loadCurrentView();
     };
 
     function init() {
@@ -23,7 +24,7 @@
                     text: "",
                     id: "refreshButton",
                     action: function () {
-                        alert("refresh button clicked");
+                        viewManager.loadCurrentView();
                     }
                 },
                 {

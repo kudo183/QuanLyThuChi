@@ -3,7 +3,6 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using huypq.SwaMiddleware;
-using Newtonsoft.Json;
 
 namespace QuanLyThuChiApi.Controllers
 {
@@ -35,7 +34,7 @@ namespace QuanLyThuChiApi.Controllers
 
             public static JsonParameterModel FromJson(string json)
             {
-                var result = JsonConvert.DeserializeObject<JsonParameterModel>(json);
+                var result = Helper.JsonConverter.Deserialize<JsonParameterModel>(json);
                 return result;
             }
         }
@@ -56,15 +55,7 @@ namespace QuanLyThuChiApi.Controllers
                 NgayTao = DateTime.UtcNow.Date
             };
             DBContext.User.Add(entity);
-            try
-            {
-                DBContext.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                return CreateStatusResult(System.Net.HttpStatusCode.InternalServerError);
-            }
-            return CreateStatusResult();
+            return SaveChanges();
         }
 
         public SwaActionResult Token(string json)
@@ -87,7 +78,7 @@ namespace QuanLyThuChiApi.Controllers
                 return CreateStatusResult(System.Net.HttpStatusCode.Unauthorized);
             }
 
-            return CreateJsonResult(new SwaTokenModel() { User = model.user });
+            return CreateJsonResult(new SwaTokenModel() { User = string.Format("{0};{1}", entity.Email, entity.Ma) });
         }
     }
 }

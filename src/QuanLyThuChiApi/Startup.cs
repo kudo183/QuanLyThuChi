@@ -42,7 +42,7 @@ namespace QuanLyThuChiApi
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.UseCors(builder => builder.WithOrigins("http://localhost:5000").AllowAnyHeader().AllowAnyMethod());
+            app.UseCors(builder => builder.WithOrigins("http://localhost:5000", "http://192.168.1.40:5000").AllowAnyHeader().AllowAnyMethod());
             
             app.UseSwa("QuanLyThuChiApi", new SwaOptions()
             {
@@ -51,7 +51,8 @@ namespace QuanLyThuChiApi
                 AllowAnonymousActions = new System.Collections.Generic.List<string>()
                 {
                     "user.register"
-                }
+                },
+                JsonSerializer = Helper.JsonConverter.Create()
             });
         }
     }

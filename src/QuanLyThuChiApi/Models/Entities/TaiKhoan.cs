@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace QuanLyThuChiApi.Models.Entities
 {
-    public partial class TaiKhoan
+    public partial class TaiKhoan : IEntity
     {
         public TaiKhoan()
         {
@@ -23,5 +23,20 @@ namespace QuanLyThuChiApi.Models.Entities
         public virtual User User { get; set; }
         public virtual ICollection<Thu> ThuN { get; set; }
         public virtual ICollection<Chi> ChiN { get; set; }
+
+        public int GetKey()
+        {
+            return Ma;
+        }
+
+        public int GetUserID()
+        {
+            return MaUser;
+        }
+
+        public void SetUserID(int userID)
+        {
+            MaUser = userID;
+        }
     }
 }

@@ -24,8 +24,11 @@ paths.imageDest = paths.webroot + "wwwroot/images";
 paths.js = [
     paths.webroot + "js/lib/huy.control.utilsDOM.js",
     paths.webroot + "js/lib/huy.control.headerMenu.js",
+    paths.webroot + "js/lib/huy.ko.binding.datepicker.js",
+    paths.webroot + "js/lib/huy.control.datagrid.js",
     paths.webroot + "js/defineNamespace.js",
     paths.webroot + "js/webApi.js",
+    paths.webroot + "js/dataProvider/taiKhoanDataProvider.js",
     paths.webroot + "js/viewModel/loginViewModel.js",
     paths.webroot + "js/viewModel/taiKhoanViewModel.js",
     paths.webroot + "js/viewManager.js",

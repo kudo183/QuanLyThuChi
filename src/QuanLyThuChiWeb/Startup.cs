@@ -16,10 +16,13 @@ namespace QuanLyThuChiWeb
         public void ConfigureServices(IServiceCollection services)
         {
             var connection = @"Server=.;Database=QuanLyThuChi;Trusted_Connection=True;";
-            services.AddDbContext<QuanLyThuChiContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<QuanLyThuChiContext>(
+                options => options.UseSqlServer(connection), ServiceLifetime.Transient);
+
             services.AddDataProtection()
                 .PersistKeysToFileSystem(new System.IO.DirectoryInfo(@"c:\temp-keys"))
                 .ProtectKeysWithDpapi();
+
             services.AddRouting();
         }
 
@@ -43,7 +46,8 @@ namespace QuanLyThuChiWeb
                 AllowAnonymousActions = new System.Collections.Generic.List<string>()
                 {
                     "user.register"
-                }
+                },
+                JsonSerializer = QuanLyThuChiApi.Helper.JsonConverter.Create()
             });
         }
     }
