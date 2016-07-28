@@ -14,6 +14,7 @@
                     .done(function (token) {
                         window.localStorage.setItem(window.tokenKey, token);
                         window.app.view.mainView.show();
+                        window.app.view.viewManager.loadCurrentView();
                     })
                     .fail(function (msg) {
                         console.log("fail: " + msg);

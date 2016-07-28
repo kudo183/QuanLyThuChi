@@ -34,7 +34,7 @@
         cellValueProperty: "ngayTao",
         readOnly: true,
         order: 0,
-        filterValue: ko.observable()
+        filterValue: ko.observable(new Date())
     });
 
     viewModel.init = function () {

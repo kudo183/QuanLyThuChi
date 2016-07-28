@@ -9,7 +9,6 @@
     function show() {
         $("#mainView").show();
         $("#loginView").hide();
-        viewManager.loadCurrentView();
     };
 
     function init() {
