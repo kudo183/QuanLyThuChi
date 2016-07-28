@@ -35,29 +35,28 @@
     }
 
     function getItemsAjax(filter, done, fail) {
-        $.when(
-            webApi.taiKhoan.get(filter)
-        ).done(function (taiKhoans, tt) {
-            var result = {
-                items: [],
-                totalItemCount: taiKhoans.totalItemCount,
-                pageIndex: taiKhoans.pageIndex,
-                pageCount: taiKhoans.pageCount
-            };
-            for (var i = 0; i < taiKhoans.items.length; i++) {
-                var item = taiKhoans.items[i];
-                result.items.push({
-                    ma: ko.observable(item.ma),
-                    maUser: ko.observable(item.maUser),
-                    tenTaiKhoan: ko.observable(item.tenTaiKhoan),
-                    soDuBanDau: ko.observable(item.soDuBanDau),
-                    soDuHienTai: ko.observable(item.soDuHienTai),
-                    ngayTao: ko.observable(new Date(item.ngayTao))
-                });
-            }
+        webApi.taiKhoan.get(filter)
+            .done(function (taiKhoans) {
+                var result = {
+                    items: [],
+                    totalItemCount: taiKhoans.totalItemCount,
+                    pageIndex: taiKhoans.pageIndex,
+                    pageCount: taiKhoans.pageCount
+                };
+                for (var i = 0; i < taiKhoans.items.length; i++) {
+                    var item = taiKhoans.items[i];
+                    result.items.push({
+                        ma: ko.observable(item.ma),
+                        maUser: ko.observable(item.maUser),
+                        tenTaiKhoan: ko.observable(item.tenTaiKhoan),
+                        soDuBanDau: ko.observable(item.soDuBanDau),
+                        soDuHienTai: ko.observable(item.soDuHienTai),
+                        ngayTao: ko.observable(new Date(item.ngayTao))
+                    });
+                }
 
-            done(result);
-        }).fail(fail);
+                done(result);
+            }).fail(fail);
     }
 
     function saveChangesAjax(changes, done, fail) {
