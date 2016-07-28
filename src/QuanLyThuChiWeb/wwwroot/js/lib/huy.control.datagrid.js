@@ -39,7 +39,7 @@ window.huy.control.dataGrid = (function () {
             paging: createPagingObject(),
             buttons: [
                 {
-                    text: "Add",
+                    text: "+",
                     action: function (root) {
                         var item = {};
                         for (var i = 1; i < root._columns.length; i++) {
@@ -56,11 +56,11 @@ window.huy.control.dataGrid = (function () {
                     }
                 },
                 {
-                    text: "Save",
+                    text: "&#x1f4be;",
                     action: save
                 },
                 {
-                    text: "Load",
+                    text: "&#8635;",
                     action: load
                 }
             ],
@@ -74,7 +74,7 @@ window.huy.control.dataGrid = (function () {
             viewModel._columns.push({
                 headerText: "",
                 type: "action",
-                text: "x",
+                text: "&#xd7;",
                 readOnly: true,
                 filterValue: ko.observable(),
                 action: function (root, item) {
@@ -345,7 +345,7 @@ window.huy.control.dataGrid = (function () {
 
             //action
             cell = createCustomFilterCellDiv();
-            addCell(row, cell, "text:text, click: function(data, event) { action($parents[0], 'filter', data, event) }"
+            addCell(row, cell, "html:text, click: function(data, event) { action($parents[0], 'filter', data, event) }"
             , 'action', "button", {});
 
             //template
@@ -398,7 +398,7 @@ window.huy.control.dataGrid = (function () {
 
             //action
             cell = createColumnFilterCellDiv();
-            addCell(row, cell, "text:text, click: function(data, event) { action($parents[0], 'filter', data, event) }"
+            addCell(row, cell, "html:text, click: function(data, event) { action($parents[0], 'filter', data, event) }"
             , 'action', "button", {});
 
             //template
@@ -426,15 +426,15 @@ window.huy.control.dataGrid = (function () {
             var view = window.huy.control.utilsDOM.createElement("div", {}, undefined, undefined, "gridBottomToolbar");
             var koWithPaging = window.huy.control.utilsDOM.createComment("ko with: paging");
             var isEnable = window.huy.control.utilsDOM.createElement("input", { type: "checkbox" }, "checked: $parent.enablePaging", undefined, undefined);
-            var first = window.huy.control.utilsDOM.createElement("button", {}, "enable: $parent.enablePaging, click: function(data, event){first($parents[0], data, event)}", "|<", undefined);
-            var last = window.huy.control.utilsDOM.createElement("button", {}, "enable: $parent.enablePaging, click: function(data, event){last($parents[0], data, event)}", ">|", undefined);
+            var first = window.huy.control.utilsDOM.createElement("button", {}, "html: '&#x21e4;', enable: $parent.enablePaging, click: function(data, event){first($parents[0], data, event)}");
+            var last = window.huy.control.utilsDOM.createElement("button", {}, "html: '&#x21e5;', enable: $parent.enablePaging, click: function(data, event){last($parents[0], data, event)}");
             var pageIndex = window.huy.control.utilsDOM.createElement("input", { size: 2 }, "enable: $parent.enablePaging, value: currentPageIndex", undefined, undefined);
             var pageCount = window.huy.control.utilsDOM.createElement("span", {}, "text:'/'+pageCount()", undefined, undefined);
-            var prev = window.huy.control.utilsDOM.createElement("button", {}, "enable: $parent.enablePaging, click: function(data, event){prev($parents[0], data, event)}", "<", undefined);
-            var next = window.huy.control.utilsDOM.createElement("button", {}, "enable: $parent.enablePaging, click: function(data, event){next($parents[0], data, event)}", ">", undefined);
+            var prev = window.huy.control.utilsDOM.createElement("button", {}, "html: '&#x2190;', enable: $parent.enablePaging, click: function(data, event){prev($parents[0], data, event)}");
+            var next = window.huy.control.utilsDOM.createElement("button", {}, "html: '&#x2192;', enable: $parent.enablePaging, click: function(data, event){next($parents[0], data, event)}");
             var endKoWithPaging = window.huy.control.utilsDOM.createComment("/ko");
             var koButtons = window.huy.control.utilsDOM.createComment("ko foreach:buttons");
-            var button = window.huy.control.utilsDOM.createElement("button", {}, "text:text, click: function(data, event){action($parents[0], data, event)}");
+            var button = window.huy.control.utilsDOM.createElement("button", {}, "html:text, click: function(data, event){action($parents[0], data, event)}");
             var endKoButtons = window.huy.control.utilsDOM.createComment("/ko");
 
             view.appendChild(koWithPaging);
@@ -485,7 +485,7 @@ window.huy.control.dataGrid = (function () {
 
             //action
             cell = createCellDiv();
-            addCell(row, cell, "text:text, click: function(data, event) { action($parents[1], $parent, data, event) }"
+            addCell(row, cell, "html:text, click: function(data, event) { action($parents[1], $parent, data, event) }"
             , 'action', "button", {});
 
             //template

@@ -27,7 +27,7 @@
                     }
                 },
                 {
-                    text: "X",
+                    text: "&#x2716;",
                     id: "exitButton",
                     action: function () {
                         window.localStorage.removeItem(window.tokenKey);

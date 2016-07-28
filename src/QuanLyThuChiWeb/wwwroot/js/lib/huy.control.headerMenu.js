@@ -39,7 +39,7 @@ window.huy.control.headerMenu = (function () {
         a = window.huy.control.utilsDOM.createElement("a", {},
             "attr: {id: id},\
             click: action,\
-            text: text",
+            html: text",
             undefined, "menuButtonItem");
 
         li.appendChild(a);
@@ -64,7 +64,7 @@ window.huy.control.headerMenu = (function () {
         a = window.huy.control.utilsDOM.createElement("a", {},
             "attr: {id: id+'Mobile'},\
             click: action,\
-            text: text",
+            html: text",
             undefined, "mobileMenuButtonItem");
 
         result.appendChild(a);
