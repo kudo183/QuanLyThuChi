@@ -15,7 +15,7 @@
     }
 
     function setItemId(item, newId) {
-        if (item.ma == undefined) {
+        if (item.ma === undefined) {
             item.ma = ko.observable(newId);
         } else {
             item.ma(newId);

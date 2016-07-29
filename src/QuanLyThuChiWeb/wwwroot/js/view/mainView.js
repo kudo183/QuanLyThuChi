@@ -9,7 +9,7 @@
     function show() {
         $("#mainView").show();
         $("#loginView").hide();
-    };
+    }
 
     function init() {
         var headerMenuViewModel = {
