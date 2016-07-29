@@ -16,6 +16,14 @@
             save: function (param) {
                 return post(apiUrl("taikhoan", "save"), param);
             }
+        },
+        mucChi: {
+            get: function () {
+                return get(apiUrl("mucChi", "getall"));
+            },
+            save: function (param) {
+                return post(apiUrl("mucChi", "save"), param);
+            }
         }
     };
     return webApi;

@@ -29,12 +29,15 @@ paths.js = [
     paths.webroot + "js/defineNamespace.js",
     paths.webroot + "js/webApi.js",
     paths.webroot + "js/dataProvider/taiKhoanDataProvider.js",
+    paths.webroot + "js/dataProvider/mucChiDataProvider.js",
     paths.webroot + "js/viewModel/loginViewModel.js",
     paths.webroot + "js/viewModel/taiKhoanViewModel.js",
+    paths.webroot + "js/viewModel/mucChiViewModel.js",
     paths.webroot + "js/viewManager.js",
     paths.webroot + "js/view/mainView.js",
     paths.webroot + "js/view/loginView.js",
     paths.webroot + "js/view/taiKhoanView.js",
+    paths.webroot + "js/view/mucChiView.js",
     paths.webroot + "js/app.js"
 ];
 

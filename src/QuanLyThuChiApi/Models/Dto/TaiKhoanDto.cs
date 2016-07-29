@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using QuanLyThuChiApi.Models.Entities;
+﻿using QuanLyThuChiApi.Models.Entities;
 using System;
 
 namespace QuanLyThuChiApi.Models.Dto
@@ -25,13 +24,7 @@ namespace QuanLyThuChiApi.Models.Dto
                 SoDuHienTai = soDuHienTai
             };
         }
-
-        public static TaiKhoanDto FromJson(string json)
-        {
-            var result = JsonConvert.DeserializeObject<TaiKhoanDto>(json);
-            return result;
-        }
-
+        
         public int GetKey()
         {
             return ma;

@@ -23,6 +23,9 @@ namespace QuanLyThuChiApi.Models.Entities
             modelBuilder.Entity<MucChi>(entity =>
             {
                 entity.Property(e => e.TenMucChi).IsRequired();
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.MucChiN)
+                    .HasForeignKey(d => d.MaUser);
             });
 
             modelBuilder.Entity<TaiKhoan>(entity =>

@@ -16,6 +16,7 @@ namespace QuanLyThuChiApi.Models.Entities
         public string PasswordHash { get; set; }
         public System.DateTime NgayTao { get; set; }
 
+        public virtual ICollection<MucChi> MucChiN { get; set; }
         public virtual ICollection<TaiKhoan> TaiKhoanN { get; set; }
     }
 }
