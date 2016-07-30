@@ -2,8 +2,7 @@
 {
     public interface IEntity
     {
-        int GetKey();
-        int GetUserID();
-        void SetUserID(int userID);
+        int Ma { get; }
+        int MaUser { get; set; }
     }
 }

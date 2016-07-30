@@ -1,31 +1,11 @@
 ﻿using huypq.SwaMiddleware;
-using Microsoft.EntityFrameworkCore;
-using QuanLyThuChiApi.Models.Dto;
 using QuanLyThuChiApi.Models.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using QuanLyThuChiApi.Helper;
-using QueryBuilder;
 
 namespace QuanLyThuChiApi.Controllers
 {
     public abstract class BaseController : SwaController, IDisposable
     {
-        protected class PagingResult<T>
-        {
-            public int totalItemCount { get; set; }
-            public int pageIndex { get; set; }
-            public int pageCount { get; set; }
-            public List<T> items { get; set; }
-        }
-
-        protected class ChangedItem<T>
-        {
-            public string State { get; set; }
-            public T Data { get; set; }
-        }
-
         private QuanLyThuChiContext _dBContext;
         protected QuanLyThuChiContext DBContext
         {
@@ -64,33 +44,7 @@ namespace QuanLyThuChiApi.Controllers
                 return _userId;
             }
         }
-
-        protected SwaActionResult Get<T, T1>(string json, IQueryable<T1> includedQuery)
-            where T : class, IDto<T1>, new()
-            where T1 : class, IEntity
-        {
-            var filter = JsonConverter.Deserialize<QueryExpression>(json);
-
-            int pageCount;
-
-            var query = QueryExpression.AddQueryExpression(
-                includedQuery, filter, Constant.DefaultPageSize, out pageCount);
-            
-            var result = new PagingResult<T>
-            {
-                pageIndex = filter.PageIndex,
-                pageCount = pageCount,
-                items = query.AsEnumerable().Select(p =>
-                {
-                    var a = new T();
-                    a.FromEntity(p);
-                    return a;
-                }).ToList()
-            };
-
-            return CreateJsonResult(result);
-        }
-
+        
         protected SwaActionResult SaveChanges()
         {
             try
@@ -104,57 +58,7 @@ namespace QuanLyThuChiApi.Controllers
             //need return an json object, if just return status code, jquery will treat as fail.
             return CreateJsonResult("OK");
         }
-
-        protected SwaActionResult Save<T, T1>(string json)
-            where T : class, IDto<T1>
-            where T1 : class, IEntity
-        {
-            var items = JsonConverter.Deserialize<List<ChangedItem<T>>>(json);
-
-            var added = new List<T1>();
-
-            foreach (var changeItem in items)
-            {
-                T1 item = changeItem.Data.ToEntity();
-
-                switch (changeItem.State)
-                {
-                    case Constant.ChangeState.Insert:
-                        item.SetUserID(UserId);
-                        DBContext.Set<T1>().Add(item);
-                        added.Add(item);
-                        break;
-                    case Constant.ChangeState.Update:
-                        if (item.GetUserID() != UserId)
-                        {
-                            return CreateStatusResult(System.Net.HttpStatusCode.Forbidden);
-                        }
-                        DBContext.Entry(item).State = EntityState.Modified;
-                        break;
-                    case Constant.ChangeState.Delete:
-                        if (item.GetUserID() != UserId)
-                        {
-                            return CreateStatusResult(System.Net.HttpStatusCode.Forbidden);
-                        }
-                        DBContext.Set<T1>().Remove(item);
-                        break;
-                    default:
-                        return CreateStatusResult(System.Net.HttpStatusCode.InternalServerError);
-                }
-            }
-
-            try
-            {
-                DBContext.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                return CreateStatusResult(System.Net.HttpStatusCode.InternalServerError);
-            }
-
-            return CreateJsonResult(added.Select(p => p.GetKey()));
-        }
-
+        
         public void Dispose()
         {
             if (_dBContext != null)
