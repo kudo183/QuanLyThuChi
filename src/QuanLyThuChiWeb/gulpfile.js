@@ -22,6 +22,7 @@ paths.imageDest = paths.webroot + "wwwroot/images";
 
 //specify js files path, order is important
 paths.js = [
+    paths.webroot + "js/lib/huypq.dateTimeUtils.js",
     paths.webroot + "js/lib/huy.control.utilsDOM.js",
     paths.webroot + "js/lib/huy.control.headerMenu.js",
     paths.webroot + "js/lib/huy.ko.binding.datepicker.js",

@@ -35,12 +35,12 @@
     });
 
     viewModel.addColumn({
-        headerText: "Ngày giờ",
+        headerText: "Ngày",
         type: "date",
-        cellValueProperty: "ngayGio",
+        cellValueProperty: "ngay",
         readOnly: true,
         order: 0,
-        filterValue: ko.observable(new Date())
+        filterValue: ko.observable(huypq.dateTimeUtils.getCurrentDate())
     });
 
     viewModel.init = function () {

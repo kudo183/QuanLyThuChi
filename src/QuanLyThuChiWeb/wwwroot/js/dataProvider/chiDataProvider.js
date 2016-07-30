@@ -29,7 +29,7 @@
             maTaiKhoan: ko.unwrap(item.maTaiKhoan),
             maMucChi: ko.unwrap(item.maMucChi),
             soTien: ko.unwrap(item.soTien),
-            ngayGio: ko.unwrap(item.ngayGio)
+            ngay: ko.unwrap(item.ngay)
         };
     }
 
@@ -53,7 +53,7 @@
                     maTaiKhoan: ko.observable(item.maTaiKhoan),
                     maMucChi: ko.observable(item.maMucChi),
                     soTien: ko.observable(item.soTien),
-                    ngayGio: ko.observable(new Date(item.ngayGio))
+                    ngay: ko.observable(new Date(item.ngay))
                 });
             }
 

@@ -7,7 +7,7 @@ namespace QuanLyThuChiApi.Helper
         private static JsonSerializerSettings settings = new JsonSerializerSettings
         {
             DateFormatHandling = DateFormatHandling.IsoDateFormat,
-            DateTimeZoneHandling = DateTimeZoneHandling.Utc
+            DateTimeZoneHandling = DateTimeZoneHandling.Local
         };
 
         public static T Deserialize<T>(string json)
