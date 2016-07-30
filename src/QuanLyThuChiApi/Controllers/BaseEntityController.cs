@@ -41,7 +41,7 @@ namespace QuanLyThuChiApi.Controllers
             var result = new PagingResult();
             result.items = includedQuery.AsEnumerable().Select(p =>
             {
-                var dto = new MucChiDto();
+                var dto = new DtoType();
                 dto.FromEntity(p);
                 return dto;
             }).ToList();
