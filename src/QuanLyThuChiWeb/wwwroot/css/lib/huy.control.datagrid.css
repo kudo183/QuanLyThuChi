@@ -1,0 +1,140 @@
+.h-dataGrid .gridBottomToolbar button {
+    border: 0 none;
+    margin: 2px;
+    padding: 3px 2px;
+    cursor: pointer;
+    width: 40px;
+}
+
+.h-dataGrid .h-input-wrapper {
+    padding: 0;
+}
+
+.h-dataGrid .customFilterCell {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+
+.h-dataGrid .table {
+    display: table;
+}
+
+.h-dataGrid .gridHeader {
+    display: table-row;
+    text-align: center;
+    background: #eaeaea;
+    background: -webkit-gradient(linear, left top, left bottom, from(#eaeaea), to(#f8f8f8));
+    background: -moz-linear-gradient(top, #eaeaea, #f8f8f8);
+    background: -ms-linear-gradient(top, #eaeaea, #f8f8f8);
+    background: -o-linear-gradient(top, #eaeaea, #f8f8f8);
+}
+
+.h-dataGrid .row {
+    display: table-row;
+}
+
+    .h-dataGrid .row.selected {
+        color: white;
+        background: #3A88E8;
+        background: -webkit-gradient(linear, left top, left bottom, from(#3A88E8), to(#3D91F7));
+        background: -moz-linear-gradient(top, #3A88E8, #3D91F7);
+        background: -ms-linear-gradient(top, #3A88E8, #3D91F7);
+        background: -o-linear-gradient(top, #3A88E8, #3D91F7);
+    }
+
+        .h-dataGrid .row.selected .readonly {
+            color: white;
+            background: #3A88E8;
+            background: -webkit-gradient(linear, left top, left bottom, from(#3A88E8), to(#3D91F7));
+            background: -moz-linear-gradient(top, #3A88E8, #3D91F7);
+            background: -ms-linear-gradient(top, #3A88E8, #3D91F7);
+            background: -o-linear-gradient(top, #3A88E8, #3D91F7);
+        }
+
+.h-dataGrid .cell.col1 {
+    width: 20px;
+}
+
+.h-dataGrid .cell.col2 {
+    width: 70px;
+}
+
+.h-dataGrid .cell.col3 {
+    width: 70px;
+}
+
+.h-dataGrid .cell.col4 {
+    width: 80px;
+}
+
+.h-dataGrid .cell.col5 {
+    width: 80px;
+}
+
+.h-dataGrid .cell.col6 {
+    width: 80px;
+}
+
+.h-dataGrid .cell {
+    display: table-cell;
+    border: 1px solid #e8eef4;
+    padding: 2px;
+}
+
+    .h-dataGrid .cell input {
+        width: 100%;
+        border: 0 none;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .h-dataGrid .cell select {
+        width: 100%;
+        border: 0 none;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .h-dataGrid .cell button {
+        width: 100%;
+        border: 0 none;
+        margin: 0px;
+        padding: 0px;
+    }
+
+.h-dataGrid .readonly {
+    background-color: #eee;
+}
+
+.h-dataGrid .columnFilter {
+    background-color: #FFE3AD;
+}
+
+    .h-dataGrid .columnFilter input {
+        width: 100%;
+        border: 0 none;
+        margin: 0px;
+        padding: 0px;
+        background-color: #FFE3AD;
+    }
+
+    .h-dataGrid .columnFilter select {
+        width: 100%;
+        border: 0 none;
+        margin: 0px;
+        padding: 0px;
+        background-color: #FFE3AD;
+    }
+
+    .h-dataGrid .columnFilter button {
+        width: 100%;
+        border: 0 none;
+        margin: 0px;
+        padding: 0px;
+        background: #FFE3AD;
+    }
+/*jquery ui datepicker size*/
+div.ui-datepicker, .ui-datepicker input {
+    font-size: 62.5%;
+}

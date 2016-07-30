@@ -5,6 +5,8 @@ using QuanLyThuChiApi.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using QuanLyThuChiApi.Helper;
+using QueryBuilder;
 
 namespace QuanLyThuChiApi.Controllers
 {
@@ -63,6 +65,32 @@ namespace QuanLyThuChiApi.Controllers
             }
         }
 
+        protected SwaActionResult Get<T, T1>(string json, IQueryable<T1> includedQuery)
+            where T : class, IDto<T1>, new()
+            where T1 : class, IEntity
+        {
+            var filter = JsonConverter.Deserialize<QueryExpression>(json);
+
+            int pageCount;
+
+            var query = QueryExpression.AddQueryExpression(
+                includedQuery, filter, Constant.DefaultPageSize, out pageCount);
+            
+            var result = new PagingResult<T>
+            {
+                pageIndex = filter.PageIndex,
+                pageCount = pageCount,
+                items = query.AsEnumerable().Select(p =>
+                {
+                    var a = new T();
+                    a.FromEntity(p);
+                    return a;
+                }).ToList()
+            };
+
+            return CreateJsonResult(result);
+        }
+
         protected SwaActionResult SaveChanges()
         {
             try
@@ -81,7 +109,7 @@ namespace QuanLyThuChiApi.Controllers
             where T : class, IDto<T1>
             where T1 : class, IEntity
         {
-            var items = Helper.JsonConverter.Deserialize<List<ChangedItem<T>>>(json);
+            var items = JsonConverter.Deserialize<List<ChangedItem<T>>>(json);
 
             var added = new List<T1>();
 

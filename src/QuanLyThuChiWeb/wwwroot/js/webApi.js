@@ -24,6 +24,14 @@
             save: function (param) {
                 return post(apiUrl("mucChi", "save"), param);
             }
+        },
+        chi: {
+            get: function (filter) {
+                return get(apiUrl("chi", "get"), filter);
+            },
+            save: function (param) {
+                return post(apiUrl("chi", "save"), param);
+            }
         }
     };
     return webApi;

@@ -25,19 +25,23 @@ paths.js = [
     paths.webroot + "js/lib/huy.control.utilsDOM.js",
     paths.webroot + "js/lib/huy.control.headerMenu.js",
     paths.webroot + "js/lib/huy.ko.binding.datepicker.js",
+    paths.webroot + "js/lib/huy.ko.binding.combobox.js",
     paths.webroot + "js/lib/huy.control.datagrid.js",
     paths.webroot + "js/defineNamespace.js",
     paths.webroot + "js/webApi.js",
     paths.webroot + "js/dataProvider/taiKhoanDataProvider.js",
     paths.webroot + "js/dataProvider/mucChiDataProvider.js",
+    paths.webroot + "js/dataProvider/chiDataProvider.js",
     paths.webroot + "js/viewModel/loginViewModel.js",
     paths.webroot + "js/viewModel/taiKhoanViewModel.js",
     paths.webroot + "js/viewModel/mucChiViewModel.js",
+    paths.webroot + "js/viewModel/chiViewModel.js",
     paths.webroot + "js/viewManager.js",
     paths.webroot + "js/view/mainView.js",
     paths.webroot + "js/view/loginView.js",
     paths.webroot + "js/view/taiKhoanView.js",
     paths.webroot + "js/view/mucChiView.js",
+    paths.webroot + "js/view/chiView.js",
     paths.webroot + "js/app.js"
 ];
 

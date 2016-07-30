@@ -1,13 +1,12 @@
 ﻿using huypq.SwaMiddleware;
 using QuanLyThuChiApi.Models.Dto;
 using QuanLyThuChiApi.Models.Entities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace QuanLyThuChiApi.Controllers
 {
-    public class TaiKhoanController : BaseController
+    public class ChiController : BaseController
     {
         public override SwaActionResult ActionInvoker(string actionName, Dictionary<string, object> parameter)
         {
@@ -15,8 +14,8 @@ namespace QuanLyThuChiApi.Controllers
 
             switch (actionName)
             {
-                case "getall":
-                    result = GetAll();
+                case "get":
+                    result = Get(parameter["json"].ToString());
                     break;
                 case "save":
                     result = Save(parameter["json"].ToString());
@@ -28,33 +27,23 @@ namespace QuanLyThuChiApi.Controllers
             return result;
         }
 
-        private IQueryable<TaiKhoan> _taiKhoanByUser
+        private IQueryable<Chi> _chiByUser
         {
             get
             {
-                return DBContext.TaiKhoan.Where(p => p.MaUser == UserId);
+                return DBContext.Chi.Where(p => p.MaUser == UserId);
             }
         }
 
-        public SwaActionResult GetAll()
+        public SwaActionResult Get(string json)
         {
-            var result = new PagingResult<TaiKhoanDto>();
-            result.items = _taiKhoanByUser.AsEnumerable().Select(p =>
-            {
-                var dto = new TaiKhoanDto();
-                dto.FromEntity(p);
-                return dto;
-            }).ToList();
-
-            result.totalItemCount = result.items.Count;
-            result.pageCount = 1;
-            result.pageIndex = 1;
-            return CreateJsonResult(result);
+            var query = _chiByUser;
+            return base.Get<ChiDto, Chi>(json, query);
         }
 
         public SwaActionResult Save(string json)
         {
-            return base.Save<TaiKhoanDto, TaiKhoan>(json);
+            return base.Save<ChiDto, Chi>(json);
         }
     }
 }

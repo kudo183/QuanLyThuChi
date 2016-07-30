@@ -16,8 +16,8 @@
     "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0",
     "huypq.Crypto.PasswordHash": "1.0.0",
     "Microsoft.AspNetCore.Cors": "1.0.0",
-    "huypq.SwaMiddleware": "1.0.0"
-  },
+    "huypq.SwaMiddleware": "1.0.0",
+    "QueryBuilder": "1.0.0-*"  },
 
   "tools": {
     "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"

@@ -17,6 +17,7 @@ namespace QuanLyThuChiApi.Models.Entities
         public System.DateTime NgayTao { get; set; }
 
         public virtual ICollection<MucChi> MucChiN { get; set; }
+        public virtual ICollection<Chi> ChiN { get; set; }
         public virtual ICollection<TaiKhoan> TaiKhoanN { get; set; }
     }
 }

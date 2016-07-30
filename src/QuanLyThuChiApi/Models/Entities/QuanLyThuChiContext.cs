@@ -55,14 +55,16 @@ namespace QuanLyThuChiApi.Models.Entities
             modelBuilder.Entity<Chi>(entity =>
             {
                 entity.Property(e => e.SoTien).IsRequired();
-                entity.Property(e => e.Ngay).IsRequired();
-                entity.Property(e => e.Gio).IsRequired();
+                entity.Property(e => e.NgayGio).IsRequired();
                 entity.HasOne(d => d.TaiKhoan)
                     .WithMany(p => p.ChiN)
                     .HasForeignKey(d => d.MaTaiKhoan);
                 entity.HasOne(d => d.MucChi)
                     .WithMany(p => p.ChiN)
                     .HasForeignKey(d => d.MaMucChi);
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.ChiN)
+                    .HasForeignKey(d => d.MaUser);
             });
         }
 
