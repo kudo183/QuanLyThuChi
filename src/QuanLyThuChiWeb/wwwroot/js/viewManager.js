@@ -23,7 +23,7 @@
         headerMenuViewModel.selectedItemValue.subscribe(handleMenuSelectedItemChanged);
 
         window.onpopstate = function (event) {
-            viewManager.setSelectedView(event.state.selectedView);
+            viewManager.setCurrentView(event.state.selectedView);
             console.log("onpopstate: " + JSON.stringify(event.state));
         };
     }

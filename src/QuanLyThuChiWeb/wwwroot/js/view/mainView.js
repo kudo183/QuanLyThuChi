@@ -39,6 +39,6 @@
         };
 
         viewManager.init("#headerContent", "#mainContent", headerMenuViewModel);
-        viewManager.setCurrentView(0);
+        viewManager.setCurrentView(window.params["v"]);
     }
 })(window.app.view.viewManager);
