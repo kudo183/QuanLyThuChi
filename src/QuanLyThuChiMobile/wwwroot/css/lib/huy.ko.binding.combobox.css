@@ -1,0 +1,58 @@
+.h-comboBox {
+    position: relative;
+}
+
+.h-wrapper {
+    display: table;
+    width: 100%;
+}
+
+.h-input-wrapper {
+    display: table-cell;
+    width: 100%;
+    padding: 0px 3px;
+}
+
+    .h-input-wrapper > input {
+        width: 100%;
+    }
+
+.h-button-wrapper {
+    display: table-cell;
+}
+
+    .h-button-wrapper > button {
+        border: 0 none;
+        padding: 3px 2px;
+        width: 1.4em;
+    }
+
+.h-boundlist-wrapper {
+    background: white none repeat scroll 0 0;
+    border-color: #98c0f4;
+    border-style: solid;
+    border-width: 1px;
+    min-width: 100%; /*percent of the width of parent element because postion absolute*/
+    max-height: 200px;
+    overflow-y: auto;
+    position: absolute;
+    transition: all 0.2s ease-in-out 0s;
+    z-index: 1000;
+}
+
+    .h-boundlist-wrapper > ul {
+        padding: 0px;
+        padding-left: 2px;
+        margin: 0px;
+    }
+
+        .h-boundlist-wrapper > ul > li {
+            list-style: outside none none;
+            cursor: default;
+            color: black;
+        }
+
+    .h-boundlist-wrapper .h-boundlist-selected {
+        background-color: #0081c2;
+        color: white;
+    }

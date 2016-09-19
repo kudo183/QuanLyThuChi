@@ -55,6 +55,7 @@ namespace QuanLyThuChiApi.Models.Entities
             modelBuilder.Entity<Chi>(entity =>
             {
                 entity.Property(e => e.SoTien).IsRequired();
+                entity.Property(e => e.GhiChu).IsRequired();
                 entity.Property(e => e.Ngay).IsRequired();
                 entity.Property(e => e.Gio).IsRequired();
                 entity.HasOne(d => d.TaiKhoan)

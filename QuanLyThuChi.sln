@@ -14,6 +14,12 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "QuanLyThuChiApi", "src\Quan
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "QuanLyThuChiWeb", "src\QuanLyThuChiWeb\QuanLyThuChiWeb.xproj", "{0677F47C-5B44-4DD1-A2EC-43560A56BAA0}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "QueryBuilder", "..\QueryBuilder\src\QueryBuilder\QueryBuilder.xproj", "{6FF410A3-05B4-4669-B63B-631236D8038C}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "QuanLyThuChiMobile", "src\QuanLyThuChiMobile\QuanLyThuChiMobile.xproj", "{E862874F-F428-48B4-9E30-B60A125198C6}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "huypq.SwaMiddleware", "..\huypq.SwaMiddleware\src\huypq.SwaMiddleware\huypq.SwaMiddleware.xproj", "{B39880D8-EF91-4069-AFC3-452F2C8603DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +34,18 @@ Global
 		{0677F47C-5B44-4DD1-A2EC-43560A56BAA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0677F47C-5B44-4DD1-A2EC-43560A56BAA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0677F47C-5B44-4DD1-A2EC-43560A56BAA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FF410A3-05B4-4669-B63B-631236D8038C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FF410A3-05B4-4669-B63B-631236D8038C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FF410A3-05B4-4669-B63B-631236D8038C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FF410A3-05B4-4669-B63B-631236D8038C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E862874F-F428-48B4-9E30-B60A125198C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E862874F-F428-48B4-9E30-B60A125198C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E862874F-F428-48B4-9E30-B60A125198C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E862874F-F428-48B4-9E30-B60A125198C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B39880D8-EF91-4069-AFC3-452F2C8603DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B39880D8-EF91-4069-AFC3-452F2C8603DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B39880D8-EF91-4069-AFC3-452F2C8603DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B39880D8-EF91-4069-AFC3-452F2C8603DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -35,5 +53,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{004D7DC6-3A90-4FF5-AC57-FAC24FB92B27} = {E063786E-B1E6-463A-8D8B-907FD63B6887}
 		{0677F47C-5B44-4DD1-A2EC-43560A56BAA0} = {E063786E-B1E6-463A-8D8B-907FD63B6887}
+		{E862874F-F428-48B4-9E30-B60A125198C6} = {E063786E-B1E6-463A-8D8B-907FD63B6887}
 	EndGlobalSection
 EndGlobal

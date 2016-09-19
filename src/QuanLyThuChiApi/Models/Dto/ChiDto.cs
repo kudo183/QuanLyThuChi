@@ -12,6 +12,7 @@ namespace QuanLyThuChiApi.Models.Dto
         public long soTien { get; set; }
         public DateTime ngay { get; set; }
         public TimeSpan gio { get; set; }
+        public string ghiChu { get; set; }
 
         public Chi ToEntity()
         {
@@ -23,7 +24,8 @@ namespace QuanLyThuChiApi.Models.Dto
                 MaMucChi = maMucChi,
                 SoTien = soTien,
                 Ngay = ngay,
-                Gio = gio
+                Gio = gio,
+                GhiChu = ghiChu
             };
         }
 
@@ -41,6 +43,7 @@ namespace QuanLyThuChiApi.Models.Dto
             soTien = chi.SoTien;
             ngay = chi.Ngay;
             gio = chi.Gio;
+            ghiChu = chi.GhiChu;
         }
     }
 }

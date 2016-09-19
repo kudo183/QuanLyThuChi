@@ -1,0 +1,138 @@
+﻿#headerMenuView {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    background-color: #3b7ea5;
+    font-size:1.4em;
+    z-index: 999999;
+}
+
+#headerMenuViewLarge > ul {
+    list-style: outside none none;
+    padding-left: 5px;
+    margin: 0px;
+    font-size: 0.8em;
+}
+
+    #headerMenuViewLarge > ul > li {
+        float: left;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        height: 21px;
+    }
+
+a.menuItem {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+a.menuButtonItem {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+a.selected {
+    text-decoration: underline;
+}
+
+#refreshButton {
+    background-image: url("images/refresh.png");
+    background-color: transparent;
+    background-position: center center;
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    border: medium none;
+    padding: 0px;
+    width: 24px;
+    height: 21px;
+    display: block;
+}
+
+#headerMenuViewMobile {
+    display: none;
+}
+
+#refreshButtonMobile {
+    background-image: url("images/refresh.png");
+    background-color: transparent;
+    background-position: center center;
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+}
+
+#mobileMenuButton {
+    cursor: pointer;
+    border-bottom: 10px double white;
+    border-top: 3px solid white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    height: 4px;
+    width: 25px;
+    float: right;
+}
+
+#mobileMenuSelectedItem {
+    color: white;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+a.mobileMenuItem {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+a.mobileMenuButtonItem {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    border: medium none;
+    padding: 0px;
+    margin-top: 2px;
+    margin-right: 5px;
+    width: 24px;
+    height: 24px;
+    float: right;
+}
+
+#mobileMenuWapper {
+    clear: both;
+}
+
+#mobileMenuWapper > ul {
+    list-style: outside none none;
+    padding-left: 5px;
+    margin: 0px;
+    font-size: 0.8em;
+}
+
+    #mobileMenuWapper > ul > li {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+@media screen and (max-width: 480px) {
+    #headerMenuViewLarge {
+        display:none;
+    }
+    
+    #headerMenuViewMobile {
+        display:block;
+    }
+}

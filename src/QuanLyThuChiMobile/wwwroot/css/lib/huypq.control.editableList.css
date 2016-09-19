@@ -1,0 +1,51 @@
+body {
+    background: white;
+    font-size: 1.4em;
+}
+
+input {
+    font-size: 1em;
+}
+
+button {
+    font-size: 0.9em;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.horizontalCenter {
+    position: absolute;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0%);
+}
+
+.rightAlign {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+.borderBottom {
+    border-bottom: 1px solid red;
+}
+
+::-webkit-input-placeholder {
+    font-style: italic;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+    font-style: italic;
+}
+
+:-ms-input-placeholder {
+    font-style: italic;
+}
